@@ -1,9 +1,9 @@
 🚀 Stop guessing which LLM fits your GPU — SmartPull picks the best model automatically.
 
-[![PyPI](https://img.shields.io/pypi/v/smartpull)](https://pypi.org/project/smartpull/)
+[![PyPI](https://img.shields.io/pypi/v/smartpull?label=PyPI)](https://pypi.org/project/smartpull/)
 [![Python](https://img.shields.io/pypi/pyversions/smartpull)](https://pypi.org/project/smartpull/)
 [![License](https://img.shields.io/github/license/Punvesh/smartpull)](LICENSE)
-[![Tests](https://github.com/Punvesh/smartpull/actions/workflows/ci.yml/badge.svg)](https://github.com/Punvesh/smartpull/actions)
+[![CI](https://github.com/Punvesh/smartpull/actions/workflows/ci.yml/badge.svg)](https://github.com/Punvesh/smartpull/actions)
 
 > **SmartPull automatically selects the best Ollama model for your GPU, quantization, and VRAM — so you never waste time guessing.**
 
