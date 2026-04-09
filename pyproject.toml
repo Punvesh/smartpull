@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name            = "smartpull"
+version         = "0.1.0"
+description     = "Hardware-aware LLM orchestration — zero-config local model setup for any GPU"
+readme          = "README.md"
+license         = { text = "MIT" }
+requires-python = ">=3.10"
+
+keywords = ["ollama", "llm", "local-ai", "vram", "gpu", "quantization", "devops"]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "click>=8.1",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "black>=23.0",
+    "flake8>=6.0",
+]
+
+# This makes "smartpull" a real terminal command after pip install
+[project.scripts]
+smartpull = "smartpull.cli:cli"
+
+[project.urls]
+Homepage      = "https://github.com/punvesh/smartpull"
+Issues        = "https://github.com/punvesh/smartpull/issues"
+
+[tool.black]
+line-length    = 100
+target-version = ["py310", "py311"]
+
+[tool.pytest.ini_options]
+testpaths      = ["tests"]
+addopts        = "-v --tb=short"
+
+[tool.setuptools.packages.find]
+where = ["."]

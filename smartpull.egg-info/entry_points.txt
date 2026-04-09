@@ -1,0 +1,2 @@
+[console_scripts]
+smartpull = smartpull.cli:cli

@@ -1,0 +1,7 @@
+FROM qwen2.5-coder:3b
+PARAMETER num_ctx 14336
+PARAMETER num_gpu 99
+PARAMETER num_thread 8
+PARAMETER f16_kv true
+PARAMETER use_mmap true
+SYSTEM "You are a coding assistant optimized for NVIDIA GeForce RTX 3050 Ti Laptop GPU. Context window: 14336 tokens. Quantization: Q4_K_S."

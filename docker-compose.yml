@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  smartpull:
+    build: .
+    container_name: smartpull
+    command: recommend
+    # Pass through NVIDIA GPU access
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./output:/app/output   # Modelfile written here
