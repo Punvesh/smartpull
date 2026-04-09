@@ -28,7 +28,19 @@ SmartPull automatically:
 
 ## 🎥 Demo
 
-![Demo](demo.gif)
+Record a short terminal walkthrough with `asciinema` and embed it here.
+
+```bash
+pip install asciinema
+asciinema rec demo.cast
+# run smartpull build
+# exit
+asciinema upload demo.cast
+```
+
+[![Demo](https://asciinema.org/a/REPLACE_ME.svg)](https://asciinema.org/a/REPLACE_ME)
+
+Replace `REPLACE_ME` with your actual recording ID after upload.
 
 ---
 
@@ -71,7 +83,7 @@ ollama pull qwen2.5-coder:3b
 ollama create smartpull-qwen2.5-coder-3b -f D:\smartpull\Modelfile
 
 # 3. Run it
-ollama run smartpull-qwen2-coder-3b
+ollama run smartpull-qwen2.5-coder-3b
 ```
 
 ---
