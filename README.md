@@ -28,57 +28,8 @@ SmartPull automatically:
 
 ## 🎥 Demo
 
-Use `asciinema` to record a short terminal walkthrough and then embed the upload link here.
+> Demo recording coming soon. See the sample output below.
 
-1. Install asciinema:
-
-```bash
-pip install asciinema
-```
-
-2. Create a free account and link your terminal:
-
-```bash
-asciinema auth
-```
-
-3. Record the demo:
-
-```bash
-asciinema rec demo.cast
-```
-
-Run these commands slowly so viewers can read the output:
-
-```bash
-smartpull scan
-smartpull recommend
-smartpull build
-```
-
-Then exit the recording:
-
-```bash
-exit
-```
-
-4. Preview locally:
-
-```bash
-asciinema play demo.cast
-```
-
-5. Upload the recording:
-
-```bash
-asciinema upload demo.cast
-```
-
-6. Replace the placeholder below with your uploaded demo ID:
-
-[![Demo](https://asciinema.org/a/REPLACE_ME.svg)](https://asciinema.org/a/REPLACE_ME)
-
-Replace `REPLACE_ME` with the actual ID from the upload URL.
 
 ---
 
