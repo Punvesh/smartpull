@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*$py.class
+.Python
+build/
+dist/
+*.egg-info/
+venv/
+.venv/
+ENV/
+.env
+
+# Pytest
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Distribution
+pip-wheel-metadata/
+share/python-wheels/
+
+# Misc
+*.log
