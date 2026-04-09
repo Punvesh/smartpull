@@ -11,13 +11,13 @@ Commands:
 
 import click
 from smartpull.hardware import get_gpu_info, print_hardware_profile
-from smartpull.matrix import get_recommendation, print_recommendation, print_full_matrix
+from smartpull.matrix import print_full_matrix
 from smartpull.core import run_smart_pull, print_smart_pull_result
 from smartpull.modelfile_gen import generate_modelfile, print_ollama_commands
 
 
 @click.group()
-@click.version_option(version="0.1.0", prog_name="smartpull")
+@click.version_option(version="0.1.1", prog_name="smartpull")
 def cli():
     """
     smartpull — Hardware-aware LLM orchestration for local models.
@@ -52,7 +52,8 @@ def recommend():
 
 @cli.command()
 @click.option(
-    "--output", "-o",
+    "--output",
+    "-o",
     default="./Modelfile",
     help="Path to write the generated Modelfile (default: ./Modelfile)",
 )

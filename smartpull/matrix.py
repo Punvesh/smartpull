@@ -18,62 +18,62 @@ MODEL_MATRIX = [
     {
         "min_vram_mb": 0,
         "max_vram_mb": 1800,
-        "model":       "gemma2:2b",
-        "quant":       "IQ4_XS",
-        "vram_mb":     1400,
-        "ctx":         2048,
-        "elo":         1180,
-        "notes":       "Bare minimum. Good for quick completions only.",
+        "model": "gemma2:2b",
+        "quant": "IQ4_XS",
+        "vram_mb": 1400,
+        "ctx": 2048,
+        "elo": 1180,
+        "notes": "Bare minimum. Good for quick completions only.",
     },
     {
         "min_vram_mb": 1800,
         "max_vram_mb": 2800,
-        "model":       "gemma4:e2b",
-        "quant":       "IQ4_XS",
-        "vram_mb":     1600,
-        "ctx":         4096,
-        "elo":         1240,
-        "notes":       "Best sub-3GB option. MoE architecture, active params ~1.6GB.",
+        "model": "gemma4:e2b",
+        "quant": "IQ4_XS",
+        "vram_mb": 1600,
+        "ctx": 4096,
+        "elo": 1240,
+        "notes": "Best sub-3GB option. MoE architecture, active params ~1.6GB.",
     },
     {
         "min_vram_mb": 2800,
         "max_vram_mb": 4500,
-        "model":       "qwen2.5-coder:3b",
-        "quant":       "Q4_K_S",
-        "vram_mb":     2600,
-        "ctx":         8192,
-        "elo":         1290,
-        "notes":       "Strong coding model. Best quality in the 3-4.5GB window.",
+        "model": "qwen2.5-coder:3b",
+        "quant": "Q4_K_S",
+        "vram_mb": 2600,
+        "ctx": 8192,
+        "elo": 1290,
+        "notes": "Strong coding model. Best quality in the 3-4.5GB window.",
     },
     {
         "min_vram_mb": 4500,
         "max_vram_mb": 6000,
-        "model":       "qwen2.5-coder:7b",
-        "quant":       "Q4_K_S",
-        "vram_mb":     4700,
-        "ctx":         16384,
-        "elo":         1340,
-        "notes":       "Top choice for 6GB cards. High context, excellent code quality.",
+        "model": "qwen2.5-coder:7b",
+        "quant": "Q4_K_S",
+        "vram_mb": 4700,
+        "ctx": 16384,
+        "elo": 1340,
+        "notes": "Top choice for 6GB cards. High context, excellent code quality.",
     },
     {
         "min_vram_mb": 6000,
         "max_vram_mb": 9000,
-        "model":       "llama3.1:8b",
-        "quant":       "Q5_K_M",
-        "vram_mb":     6000,
-        "ctx":         32768,
-        "elo":         1360,
-        "notes":       "Balanced general + coding. Good for 8GB cards.",
+        "model": "llama3.1:8b",
+        "quant": "Q5_K_M",
+        "vram_mb": 6000,
+        "ctx": 32768,
+        "elo": 1360,
+        "notes": "Balanced general + coding. Good for 8GB cards.",
     },
     {
         "min_vram_mb": 9000,
         "max_vram_mb": 999999,
-        "model":       "qwen2.5-coder:14b",
-        "quant":       "Q5_K_M",
-        "vram_mb":     9000,
-        "ctx":         32768,
-        "elo":         1420,
-        "notes":       "High-end option. Near GPT-4o level coding for local models.",
+        "model": "qwen2.5-coder:14b",
+        "quant": "Q5_K_M",
+        "vram_mb": 9000,
+        "ctx": 32768,
+        "elo": 1420,
+        "notes": "High-end option. Near GPT-4o level coding for local models.",
     },
 ]
 
@@ -86,21 +86,21 @@ def get_recommendation(usable_vram_mb: int) -> dict:
     for entry in MODEL_MATRIX:
         if entry["min_vram_mb"] <= usable_vram_mb < entry["max_vram_mb"]:
             return {
-                "status":       "ok",
+                "status": "ok",
                 "usable_vram_mb": usable_vram_mb,
-                "model":        entry["model"],
-                "quant":        entry["quant"],
+                "model": entry["model"],
+                "quant": entry["quant"],
                 "vram_needed_mb": entry["vram_mb"],
-                "ctx":          entry["ctx"],
-                "elo":          entry["elo"],
-                "headroom_mb":  usable_vram_mb - entry["vram_mb"],
-                "notes":        entry["notes"],
+                "ctx": entry["ctx"],
+                "elo": entry["elo"],
+                "headroom_mb": usable_vram_mb - entry["vram_mb"],
+                "notes": entry["notes"],
             }
 
     # Fallback — should never hit this
     return {
-        "status":       "error",
-        "error":        f"No model found for {usable_vram_mb} MB usable VRAM",
+        "status": "error",
+        "error": f"No model found for {usable_vram_mb} MB usable VRAM",
         "usable_vram_mb": usable_vram_mb,
     }
 
@@ -116,8 +116,8 @@ def print_recommendation(rec: dict):
         print("=" * 45)
         return
 
-    usable_gb   = rec["usable_vram_mb"] / 1024
-    needed_gb   = rec["vram_needed_mb"] / 1024
+    usable_gb = rec["usable_vram_mb"] / 1024
+    needed_gb = rec["vram_needed_mb"] / 1024
     headroom_mb = rec["headroom_mb"]
 
     print(f"  Usable VRAM  : {usable_gb:.2f} GB")

@@ -3,7 +3,6 @@ smartpull - Unit Tests
 Layer 6: pytest tests for core logic. Mocks nvidia-smi so tests run without a GPU.
 """
 
-import pytest
 from unittest.mock import patch, MagicMock
 from smartpull.hardware import get_gpu_info
 from smartpull.matrix import get_recommendation
@@ -12,12 +11,12 @@ from smartpull.modelfile_gen import generate_modelfile
 import tempfile
 import os
 
-
 # ============================================================
 # Layer 1 — Hardware Detection Tests
 # ============================================================
 
 MOCK_NVIDIA_SMI_OUTPUT = "NVIDIA GeForce RTX 3050 Ti Laptop GPU, 4096, 2800, 1296, 551.23"
+
 
 @patch("smartpull.hardware.subprocess.run")
 def test_get_gpu_info_success(mock_run):
@@ -70,6 +69,7 @@ def test_get_gpu_info_nonzero_exit(mock_run):
 # Layer 2 — Model Matrix Tests
 # ============================================================
 
+
 def test_recommendation_under_1800mb():
     """Under 1800MB → gemma2:2b recommended."""
     rec = get_recommendation(1500)
@@ -109,6 +109,7 @@ def test_recommendation_returns_positive_headroom():
 # ============================================================
 # Layer 3 — Smart Pull Logic Tests
 # ============================================================
+
 
 def test_ctx_expansion_with_headroom():
     """Large headroom should expand context window."""
@@ -173,6 +174,7 @@ def test_run_smart_pull_success(mock_hw):
 # ============================================================
 # Layer 4 — Modelfile Generator Tests
 # ============================================================
+
 
 def test_generate_modelfile_creates_file():
     """Modelfile should be written to disk."""

@@ -5,9 +5,8 @@ The brain of the tool — takes raw GPU data, applies all calculations,
 and returns a final actionable recommendation object.
 """
 
-from smartpull.hardware import get_gpu_info, print_hardware_profile
-from smartpull.matrix import get_recommendation, print_recommendation
-
+from smartpull.hardware import get_gpu_info
+from smartpull.matrix import get_recommendation
 
 # ============================================================
 # MoE (Mixture of Experts) Active Parameter Lookup
@@ -16,10 +15,10 @@ from smartpull.matrix import get_recommendation, print_recommendation
 # ============================================================
 
 MOE_MODELS = {
-    "gemma4:e2b":    {"total_params_b": 4.0,  "active_params_b": 1.6},
-    "gemma4:27b":    {"total_params_b": 27.0, "active_params_b": 3.8},
-    "mixtral:8x7b":  {"total_params_b": 46.7, "active_params_b": 12.9},
-    "qwen2.5:72b":   {"total_params_b": 72.0, "active_params_b": 20.0},
+    "gemma4:e2b": {"total_params_b": 4.0, "active_params_b": 1.6},
+    "gemma4:27b": {"total_params_b": 27.0, "active_params_b": 3.8},
+    "mixtral:8x7b": {"total_params_b": 46.7, "active_params_b": 12.9},
+    "qwen2.5:72b": {"total_params_b": 72.0, "active_params_b": 20.0},
 }
 
 
@@ -72,8 +71,8 @@ def run_smart_pull() -> dict:
     if hw["status"] == "error":
         return {
             "status": "error",
-            "stage":  "hardware_detection",
-            "error":  hw["error"],
+            "stage": "hardware_detection",
+            "error": hw["error"],
         }
 
     # Step 2 — Model Matrix Lookup
@@ -82,8 +81,8 @@ def run_smart_pull() -> dict:
     if rec["status"] == "error":
         return {
             "status": "error",
-            "stage":  "model_matrix",
-            "error":  rec["error"],
+            "stage": "model_matrix",
+            "error": rec["error"],
         }
 
     # Step 3 — MoE Awareness Check
@@ -104,36 +103,33 @@ def run_smart_pull() -> dict:
 
     # Step 5 — Build Final Recommendation Object
     final = {
-        "status":           "ok",
-
+        "status": "ok",
         # Hardware summary
-        "gpu":              hw["gpu"],
-        "driver":           hw["driver"],
-        "os":               hw["os"],
-        "total_vram_mb":    hw["total_vram_mb"],
-        "free_vram_mb":     hw["free_vram_mb"],
-        "usable_vram_mb":   hw["usable_vram_mb"],
-        "buffer_mb":        hw["buffer_mb"],
-
+        "gpu": hw["gpu"],
+        "driver": hw["driver"],
+        "os": hw["os"],
+        "total_vram_mb": hw["total_vram_mb"],
+        "free_vram_mb": hw["free_vram_mb"],
+        "usable_vram_mb": hw["usable_vram_mb"],
+        "buffer_mb": hw["buffer_mb"],
         # Model recommendation
-        "model":            rec["model"],
-        "quant":            rec["quant"],
-        "vram_needed_mb":   rec["vram_needed_mb"],
-        "headroom_mb":      rec["headroom_mb"],
-        "elo":              rec["elo"],
-        "notes":            rec["notes"],
-
+        "model": rec["model"],
+        "quant": rec["quant"],
+        "vram_needed_mb": rec["vram_needed_mb"],
+        "headroom_mb": rec["headroom_mb"],
+        "elo": rec["elo"],
+        "notes": rec["notes"],
         # Optimized settings
-        "ctx":              optimized_ctx,
-        "base_ctx":         rec["ctx"],
-        "ctx_expanded":     optimized_ctx > rec["ctx"],
-
+        "ctx": optimized_ctx,
+        "base_ctx": rec["ctx"],
+        "ctx_expanded": optimized_ctx > rec["ctx"],
         # MoE info
-        "is_moe":           moe_info is not None,
-        "moe_note":         moe_note,
-
+        "is_moe": moe_info is not None,
+        "moe_note": moe_note,
         # Swap safety
-        "swap_risk":        "LOW" if rec["headroom_mb"] > 500 else "MEDIUM" if rec["headroom_mb"] > 200 else "HIGH",
+        "swap_risk": (
+            "LOW" if rec["headroom_mb"] > 500 else "MEDIUM" if rec["headroom_mb"] > 200 else "HIGH"
+        ),
     }
 
     return final
@@ -151,9 +147,9 @@ def print_smart_pull_result(result: dict):
         print("=" * 50)
         return
 
-    usable_gb   = result["usable_vram_mb"] / 1024
-    needed_gb   = result["vram_needed_mb"] / 1024
-    total_gb    = result["total_vram_mb"] / 1024
+    usable_gb = result["usable_vram_mb"] / 1024
+    needed_gb = result["vram_needed_mb"] / 1024
+    total_gb = result["total_vram_mb"] / 1024
 
     print(f"  GPU              : {result['gpu']}")
     print(f"  Total VRAM       : {total_gb:.1f} GB")
