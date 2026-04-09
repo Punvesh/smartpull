@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name            = "smartpull"
-version         = "0.1.1"
+version         = "0.1.2"
 description     = "Hardware-aware LLM orchestration — zero-config local model setup for any GPU"
 readme          = "README.md"
 license         = { text = "MIT" }
