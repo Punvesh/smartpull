@@ -1,7 +1,7 @@
 # smartpull ⚡
 
 [![CI](https://github.com/punvesh/smartpull/actions/workflows/ci.yml/badge.svg)](https://github.com/punvesh/smartpull/actions)
-[![PyPI](https://img.shields.io/pypi/v/smartpull)](https://pypi.org/project/smartpull/)
+[![PyPI](https://img.shields.io/pypi/v/smartpull?label=PyPI)](https://pypi.org/project/smartpull/)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Docker](https://img.shields.io/badge/docker-ready-blue)](Dockerfile)
