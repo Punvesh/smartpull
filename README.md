@@ -1,29 +1,34 @@
-# smartpull ⚡
+🚀 Stop guessing which LLM fits your GPU — SmartPull picks the best model automatically.
 
-[![CI](https://github.com/punvesh/smartpull/actions/workflows/ci.yml/badge.svg)](https://github.com/punvesh/smartpull/actions)
 [![PyPI](https://img.shields.io/pypi/v/smartpull)](https://pypi.org/project/smartpull/)
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Docker](https://img.shields.io/badge/docker-ready-blue)](Dockerfile)
+[![Python](https://img.shields.io/pypi/pyversions/smartpull)](https://pypi.org/project/smartpull/)
+[![License](https://img.shields.io/github/license/Punvesh/smartpull)](LICENSE)
+[![Tests](https://github.com/Punvesh/smartpull/actions/workflows/ci.yml/badge.svg)](https://github.com/Punvesh/smartpull/actions)
 
 > **SmartPull automatically selects the best Ollama model for your GPU, quantization, and VRAM — so you never waste time guessing.**
 
 ---
 
-## Why SmartPull?
+## 😫 The Problem
 
-Local model runtimes like Ollama and LM Studio are fantastic — until your GPU runs out of memory.
-SmartPull solves that problem by turning real-time VRAM data into a safe, battle-tested Ollama model recommendation.
+Running local LLMs is frustrating:
+- Models crash due to VRAM limits
+- No clear model selection guidance
+- Trial and error wastes time
 
-- No more guessing which quant works for your GPU
-- No more swap-induced stalls
-- No more manual model tuning for every new card
+## ✅ The Solution
 
-SmartPull is ideal for:
+SmartPull automatically:
+- Detects your GPU
+- Calculates safe usable VRAM
+- Recommends the best model + quantization
+- Builds an Ollama-compatible Modelfile
 
-- developers using low-end GPUs
-- engineers optimizing local coding assistants
-- anyone running Ollama on a laptop or desktop with limited VRAM
+---
+
+## 🎥 Demo
+
+![Demo](demo.gif)
 
 ---
 
@@ -182,6 +187,10 @@ Contributions are welcome. If you want to add support for new hardware, extend t
 2. Create a feature branch
 3. Run tests locally
 4. Submit a PR with a clear description
+
+---
+
+⭐ If this helps you, please star the repo — it motivates further development!
 
 ---
 
