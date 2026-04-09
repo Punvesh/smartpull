@@ -13,12 +13,7 @@ SmartPull profiles your GPU in real-time and recommends the best Ollama model, q
 ---
 
 ## 🎥 Demo
-
-[![Demo](https://asciinema.org/a/REPLACE_ME.svg)](https://asciinema.org/a/REPLACE_ME)
-
-> Record with `asciinema rec demo.cast` → upload with `asciinema upload demo.cast` → replace `REPLACE_ME` with your ID.
-
----
+coming soon..
 
 ## 😫 The Problem
 
